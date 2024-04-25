@@ -89,16 +89,12 @@ class Calculator {
     }
 
     static Object rubl(float sumFinal) {
-        float lastDigit = (int) (sumFinal % 10);
-        switch ((int) lastDigit) {
-            case 1:
-                return "рубль";
-            case 2:
-            case 3:
-            case 4:
-                return "рубля";
-            default:
-                return "рублей";
-        }
+        float lastDigit = (int) (sumFinal % 100);
+        return switch ((int) lastDigit) {
+            case 1 -> "рубль";
+            case 2, 3, 4 -> "рубля";
+            case 11,12,13,14,15,16,17,18,19-> "рублей";
+            default -> "рублей";
+        };
             }
 }
